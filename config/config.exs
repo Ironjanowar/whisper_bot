@@ -15,16 +15,8 @@ config :ex_gram,
 config :logger,
   level: :debug,
   truncate: :infinity,
-  backends: [{LoggerFileBackend, :debug}, {LoggerFileBackend, :error}]
-
-config :logger, :debug,
-  path: "log/debug.log",
-  level: :debug,
-  format: "$dateT$timeZ [$level] $message\n"
-
-config :logger, :error,
-  path: "log/error.log",
-  level: :error,
-  format: "$dateT$timeZ [$level] $message\n"
+  backends: [{LoggerFileBackend, :debug}]
 
 config :nx, default_backend: EXLA.Backend
+
+import_config "#{Mix.env()}.exs"

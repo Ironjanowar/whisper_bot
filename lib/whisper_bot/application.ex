@@ -10,6 +10,9 @@ defmodule WhisperBot.Application do
     token = ExGram.Config.get(:ex_gram, :token)
 
     children = [
+      {Task.Supervisor, name: WhisperBot.TranscriberSupervisor},
+      WhisperBot.MessageEditor,
+      WhisperBot.Transcriber,
       {Nx.Serving, serving: serving(), name: Whisper},
       ExGram,
       {WhisperBot.Bot, [method: :polling, token: token]}
