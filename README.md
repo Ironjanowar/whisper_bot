@@ -1,21 +1,23 @@
 # WhisperBot
 
-**TODO: Add description**
+# Deploy your own WhisperBot
 
-## Installation
+## Create a bot in Telegram
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `whisper_bot` to your list of dependencies in `mix.exs`:
+Send `/newbot` to [BotFather](https://t.me/BotFather) and follow the steps to create a bot.
 
-```elixir
-def deps do
-  [
-    {:whisper_bot, "~> 0.1.0"}
-  ]
-end
-```
+Copy the bot token provided by BotFather and create a `bot.token` file in the base of this repository with the token in it.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/whisper_bot>.
+## Create the release
 
+Execute `MIX_ENV=prod make release` to create a release that will only log errors to the `log/error.log` file
+
+## Start the release
+
+Execute `MIX_ENV=prod make start` to start the release
+
+Send `/start` or `/help` to your bot in Telegram to verify that it is running
+
+## Stop the release
+
+Execute `MIX_ENV=prod make stop` to stop the release
